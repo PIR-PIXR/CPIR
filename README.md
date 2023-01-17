@@ -1,4 +1,4 @@
-![CPIR](https://user-images.githubusercontent.com/87842051/213029654-f513939d-4e7e-4baa-8a6a-5b74aa4484e8.png)
+***![CPIR](https://user-images.githubusercontent.com/87842051/213029654-f513939d-4e7e-4baa-8a6a-5b74aa4484e8.png)
 # CPIR: A Committed Private Information Retrieval Library that achieves high performance and flexibility.
 
 ## Abstract. 
