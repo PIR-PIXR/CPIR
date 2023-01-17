@@ -33,16 +33,16 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
     $ ./build.sh
     Copy file libblst.a created to folder blst/lib of the project (CPIR folder)
 
-### Compiling LM-CKGS (2-CKGS)
+### Testing LM-CKGS (2-CKGS)
     $ gcc -o ComCKGS ComCKGSmain.c database.c LMC.c verifyhash.c CKGS.c -lcrypto -lgmp -L /FULL-PATH/ComPIR/blst/lib/ -lblst
     $ ./ComCKGS
-### Compiling LM-CKGS (k-CKGS)
+### Testing LM-CKGS (k-CKGS)
     $ gcc ComGenCKGS ComGenCKGSmain.c database.c LMC.c verifyhash.c GenCKGS.c utils.c -lcrypto -lgmp -L /FULL-PATH/ComPIR/blst/lib/ -lblst
     $ ./ComGenCKGS
-### Compiling LM-WY
+### Testing LM-WY
     $ gcc -o ComWY ComWYmain.c database.c LMC.c verifyhash.c WY.c utils.c -lcrypto -lgmp -L /FULL-PATH/ComPIR/blst/lib/ -lblst
     $ ./ComWY
-### Compiling LM-BE
+### Testing LM-BE
     $ gcc -o ComBE ComBEmain.c database.c LMC.c verifyhash.c BE.c utils.c -lcrypto -lgmp -lm -L /FULL-PATH/ComPIR/blst/lib/ -lblst
     $ ./ComBE
    
