@@ -17,7 +17,7 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
     $ sudo apt update
     $ sudo apt upgrade
     $ sudo apt install build-essential
-#### GMP
+- #### GMP
     Download GMP from https://gmplib.org/
     Extract
     $ sudo apt-get install m4
@@ -25,9 +25,9 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
     $ make
     $ sudo make install
     $ make check
-#### Openssl
+- #### Openssl
     $ sudo apt install libssl-dev
-#### Blst
+- #### Blst
     $ git clone https://github.com/supranational/blst.git
     $ cd blst
     $ ./build.sh
