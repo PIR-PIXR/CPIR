@@ -46,3 +46,19 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
     $ gcc -o ComBE ComBEmain.c database.c LMC.c verifyhash.c BE.c utils.c -lcrypto -lgmp -lm -L /FULL-PATH/ComPIR/blst/lib/ -lblst
     $ ./ComBE
    
+## Performance
+<p align="center">
+  <img width="476" height="249" src="https://user-images.githubusercontent.com/87842051/213029654-f513939d-4e7e-4baa-8a6a-5b74aa4484e8.png">
+</p>
+
+<p align="center">
+  <img width="476" height="249" src="https://user-images.githubusercontent.com/87842051/213029654-f513939d-4e7e-4baa-8a6a-5b74aa4484e8.png">
+</p>
+
+<p align="center">
+  <img width="476" height="249" src="https://user-images.githubusercontent.com/87842051/213029654-f513939d-4e7e-4baa-8a6a-5b74aa4484e8.png">
+</p>
+
+<p align="center">
+  <img width="476" height="249" src="https://user-images.githubusercontent.com/87842051/213029654-f513939d-4e7e-4baa-8a6a-5b74aa4484e8.png">
+</p>
