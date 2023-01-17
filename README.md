@@ -14,24 +14,24 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
 ### Installing Libraries
 
 - #### GCC
-    $ sudo apt update
-    $ sudo apt upgrade
-    $ sudo apt install build-essential
+      $ sudo apt update
+      $ sudo apt upgrade
+      $ sudo apt install build-essential
 - #### GMP
-    Download GMP from https://gmplib.org/
-    Extract
-    $ sudo apt-get install m4
-    $ ./configure
-    $ make
-    $ sudo make install
-    $ make check
+      Download GMP from https://gmplib.org/
+      Extract
+      $ sudo apt-get install m4
+      $ ./configure
+      $ make
+      $ sudo make install
+      $ make check
 - #### Openssl
-    $ sudo apt install libssl-dev
+      $ sudo apt install libssl-dev
 - #### Blst
-    $ git clone https://github.com/supranational/blst.git
-    $ cd blst
-    $ ./build.sh
-    Copy file libblst.a created to folder blst/lib of the project (CPIR folder)
+      $ git clone https://github.com/supranational/blst.git
+      $ cd blst
+      $ ./build.sh
+      Copy file libblst.a created to folder blst/lib of the project (CPIR folder)
 
 ### Testing LM-CKGS (2-CKGS)
     $ gcc -o ComCKGS ComCKGSmain.c database.c LMC.c verifyhash.c CKGS.c -lcrypto -lgmp -L /FULL-PATH/ComPIR/blst/lib/ -lblst
