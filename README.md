@@ -13,7 +13,7 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
 ## Compiling CPIR
 ### Installing Libraries
 
-#### GCC
+- #### GCC
     $ sudo apt update
     $ sudo apt upgrade
     $ sudo apt install build-essential
