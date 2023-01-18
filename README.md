@@ -55,17 +55,17 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
 <p align="center">
   <img width="448" height="345" src="https://user-images.githubusercontent.com/87842051/213037482-bde95eb1-f9e2-4f92-a6d5-4b5b52c77194.png"> <img width="448" height="345" src="https://user-images.githubusercontent.com/87842051/213037508-84804e8b-b4d2-4d13-9bd0-bb5894c9422f.png">
 </p>
-**Fig. 2.** The comparison of the average server and client computation times between LM-CKGS and LM-BE schemes where n = 2^10, m = 2^12, t = (k − 1) for both schemes, t = 1 for LM-BE scheme, and k increases from 3 to 6. Assume (k − 1) colluding servers in the system, the LM-BE scheme performs quite better on the server side. In contrast, the LM-CKGS computational cost is slightly lower on the Client side. For the LM-BE scheme, there is a tradeoff when t changes and higher t means higher computation costs.
+<strong> Fig. 2.</strong> The comparison of the average server and client computation times between LM-CKGS and LM-BE schemes where n = 2^10, m = 2^12, t = (k − 1) for both schemes, t = 1 for LM-BE scheme, and k increases from 3 to 6. Assume (k − 1) colluding servers in the system, the LM-BE scheme performs quite better on the server side. In contrast, the LM-CKGS computational cost is slightly lower on the Client side. For the LM-BE scheme, there is a tradeoff when t changes and higher t means higher computation costs.
 
 <p align="center">
   <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213037466-2a36574d-e036-4f78-bcc9-c20a6e7201e9.png"> <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213037495-19092435-2fae-4333-bd27-cecead75c659.png">
 </p>
-**Fig. 3.** The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where k = 2, t = 1, m = 2^10, and n increases from 2^8 to 2^12. When n increases, the total LM-PIR computation time increases, especially the LM computation time increases significantly. It means that the percentage of LMC-related computation time increases significantly when the horizontal database increases.
+<strong> Fig. 3.</strong> The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where k = 2, t = 1, m = 2^10, and n increases from 2^8 to 2^12. When n increases, the total LM-PIR computation time increases, especially the LM computation time increases significantly. It means that the percentage of LMC-related computation time increases significantly when the horizontal database increases.
 
 <p align="center">
   <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213037471-3d83cbcd-fdd1-4cd7-803c-b81f8e17b6f2.png"> <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213037500-01795d8e-65c5-4e3a-a0f9-94b8198d146c.png">
 </p>
-**Fig. 4.** The comparison of the average server and client computation times of the LM-WY scheme where t = 1, n = 2^10, m = (2^10, 2^12), and (d, k) =
+<strong> Fig. 4.</strong> The comparison of the average server and client computation times of the LM-WY scheme where t = 1, n = 2^10, m = (2^10, 2^12), and (d, k) =
 ((3, 2), (4, 3), (5, 3), (6, 4)). When d increases, the LM-PIR computation time on the server side tends to decrease because the number of answers and witnesses decreases regarded to O(n^(1/d)). However, when d increases, the size of queries also grows. It is why the computation cost of higher d is slightly higher in some cases, but in general, the computation time on the server side reduces when d rises. On the Client side, the computation cost trend is similar to the computation time on the server. However, d increases lead to an increase in k, so the total computation time on the Client side grows.
 
 ## ACKNOWLEDGMENTS 
