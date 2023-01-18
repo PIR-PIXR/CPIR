@@ -47,7 +47,8 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
     $ ./ComBE
    
 ## Performance
-The implementation results show that our schemes with extra protection for the Client will increase the **constant** practical time on both servers and the client sides compared to the original PIR.
+The implementation results show that our schemes with extra protection for the Client will increase the **constant** practical time on both servers and the client sides compared to the original PIR. We implemented multiple database sizes and several servers in the system. The overhead of LM is constant with the same size n, so when the database size increases, the percentage of LM time reduces significantly in the total LM-PIR time (see Fig. 1). The computation time for servers and the Client is below one second in most scenarios when the number of colluding servers is k − 1, except in the LM-WY case.
+
 <p align="center">
   <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/213037442-67e59f59-e73d-424f-9b39-6fcf5ddc3461.png"> <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/213038130-c65c1388-7e95-4100-af92-c71a4337a0f9.png">
 </p>
