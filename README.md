@@ -50,7 +50,7 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
 <p align="center">
   <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213037442-67e59f59-e73d-424f-9b39-6fcf5ddc3461.png"> <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213038130-c65c1388-7e95-4100-af92-c71a4337a0f9.png">
 </p>
-__Fig. 1.__ The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where k = 2, t = 1, n = 2^10, and m is changing (2^0, 2^12, 2^14, 2^16). When m increases, the total LM-PIR computation time increases, but the LM computation time parts are constant. It means that the percentage of LMC-related computation time decreases significantly when the vertical database increases.
+<strong> Fig. 1.</strong> The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where k = 2, t = 1, n = 2^10, and m is changing (2^0, 2^12, 2^14, 2^16). When m increases, the total LM-PIR computation time increases, but the LM computation time parts are constant. It means that the percentage of LMC-related computation time decreases significantly when the vertical database increases.
 
 <p align="center">
   <img width="448" height="345" src="https://user-images.githubusercontent.com/87842051/213037482-bde95eb1-f9e2-4f92-a6d5-4b5b52c77194.png"> <img width="448" height="345" src="https://user-images.githubusercontent.com/87842051/213037508-84804e8b-b4d2-4d13-9bd0-bb5894c9422f.png">
