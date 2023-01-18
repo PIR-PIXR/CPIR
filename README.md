@@ -54,7 +54,11 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
 ### Executing LM-BE
     $ gcc -o ComBE ComBEmain.c database.c LMC.c verifyhash.c BE.c utils.c -lcrypto -lgmp -lm -L /FULL-PATH/ComPIR/blst/lib/ -lblst
     $ ./ComBE
-
+### Plotting
+    $ python3 figure_case1.py
+    $ python3 figure_case2.py
+    $ python3 figure_case3.py
+    $ python3 figure_case4.py
 ---
 ## Performance
 The implementation results show that our schemes with extra protection for the Client will increase the **constant** practical time on both servers and the client sides compared to the original PIR. We implemented multiple database sizes and several servers in the system. The overhead of LM is constant with the same size n, so when the database size increases, the percentage of LM time reduces significantly in the total LM-PIR time (see Fig. 1). The computation time for servers and the Client is below one second in most scenarios when the number of colluding servers is k − 1, except in the LM-WY case.
