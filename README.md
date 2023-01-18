@@ -16,7 +16,7 @@ well-known representative PIR schemes: the CKGS scheme (the very first PIR schem
 
 ---
 ## Experimental setup
-We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memory. We compiled our C code with GCC version 11.3.0,[GMP](https://gmplib.org/) 6.2.1 for calculating the large number, Openssl 2022 for hashing data with SHA3-256, and [blst](https://github.com/supranational/blst) v.0.3.10 2022 for LMC parts. Our program is more than 3000 lines of C language and is published on [Github](https://github.com/PIR-PIXR/CPIR).
+We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was Intel® Core™ i5-1035G1 CPU @ 1.00GHz×8, 15GB System memory. We compiled our C code with GCC version 11.3.0, [GMP](https://gmplib.org/) 6.2.1 for calculating the large number, Openssl 2022 for hashing data with SHA3-256, and [blst](https://github.com/supranational/blst) v.0.3.10 2022 for LMC parts. Our program is more than 3000 lines of C language and is published on [Github](https://github.com/PIR-PIXR/CPIR).
 
 ---
 ## Compiling CPIR
