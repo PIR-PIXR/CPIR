@@ -53,7 +53,7 @@ We ran our experiments on Ubuntu 22.04.1 LTS environment where the processor was
 Fig. 1. The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where k = 2, t = 1, n = 2^10, and m is changing (2^0, 2^12, 2^14, 2^16). When m increases, the total LM-PIR computation time increases, but the LM computation time parts are constant. It means that the percentage of LMC-related computation time decreases significantly when the vertical database increases.
 
 <p align="center">
-  <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213037482-bde95eb1-f9e2-4f92-a6d5-4b5b52c77194.png"> <img width="448" height="341" src="https://user-images.githubusercontent.com/87842051/213037508-84804e8b-b4d2-4d13-9bd0-bb5894c9422f.png">
+  <img width="448" height="345" src="https://user-images.githubusercontent.com/87842051/213037482-bde95eb1-f9e2-4f92-a6d5-4b5b52c77194.png"> <img width="448" height="345" src="https://user-images.githubusercontent.com/87842051/213037508-84804e8b-b4d2-4d13-9bd0-bb5894c9422f.png">
 </p>
 Fig. 2. The comparison of the average server and client computation times between LM-CKGS and LM-BE schemes where n = 2^10, m = 2^12, t = (k − 1) for both schemes, t = 1 for LM-BE scheme, and k increases from 3 to 6. Assume (k − 1) colluding servers in the system, the LM-BE scheme performs quite better on the server side. In contrast, the LM-CKGS computational cost is slightly lower on the Client side. For the LM-BE scheme, there is a tradeoff when t changes and higher t means higher computation costs.
 
