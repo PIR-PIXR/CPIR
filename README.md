@@ -43,16 +43,16 @@ We ran our experiments on **Ubuntu** 22.04.1 LTS environment where the processor
       Copy file libblst.a created to folder blst/lib of the project (CPIR folder)
 
 ### Executing LM-CKGS (2-CKGS)
-    $ gcc -o ComCKGS ComCKGSmain.c database.c LMC.c verifyhash.c CKGS.c -lcrypto -lgmp -L /FULL-PATH/ComPIR/blst/lib/ -lblst
+    $ gcc -o ComCKGS ComCKGSmain.c database.c LMC.c verifyhash.c CKGS.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComCKGS
 ### Executing LM-CKGS (k-CKGS)
-    $ gcc ComGenCKGS ComGenCKGSmain.c database.c LMC.c verifyhash.c GenCKGS.c utils.c -lcrypto -lgmp -L /FULL-PATH/ComPIR/blst/lib/ -lblst
+    $ gcc ComGenCKGS ComGenCKGSmain.c database.c LMC.c verifyhash.c GenCKGS.c utils.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComGenCKGS
 ### Executing LM-WY
-    $ gcc -o ComWY ComWYmain.c database.c LMC.c verifyhash.c WY.c utils.c -lcrypto -lgmp -L /FULL-PATH/ComPIR/blst/lib/ -lblst
+    $ gcc -o ComWY ComWYmain.c database.c LMC.c verifyhash.c WY.c utils.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComWY
 ### Executing LM-BE
-    $ gcc -o ComBE ComBEmain.c database.c LMC.c verifyhash.c BE.c utils.c -lcrypto -lgmp -lm -L /FULL-PATH/ComPIR/blst/lib/ -lblst
+    $ gcc -o ComBE ComBEmain.c database.c LMC.c verifyhash.c BE.c utils.c -lcrypto -lgmp -lm -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComBE
 ### Plotting
     $ python3 figure_case1.py
