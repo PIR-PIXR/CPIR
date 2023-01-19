@@ -86,4 +86,4 @@ The implementation results show that our schemes with extra protection for the C
 
 ---
 ## ACKNOWLEDGMENTS 
-This work was supported by the Australian Research Council through the Discovery Project under Grant DP200100731 and carried out on Oracle virtual machines, supported by Oracle for Research.
+This work was supported by the Australian Research Council through the Discovery Project under Grant DP200100731.
