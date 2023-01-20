@@ -55,6 +55,7 @@ We ran our experiments on **Ubuntu** 22.04.1 LTS environment where the processor
     $ gcc -o ComBE ComBEmain.c database.c LMC.c verifyhash.c BE.c utils.c -lcrypto -lgmp -lm -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComBE
 ### Plotting
+    $ cd graphs
     $ python3 figure_case1.py
     $ python3 figure_case2.py
     $ python3 figure_case3.py
