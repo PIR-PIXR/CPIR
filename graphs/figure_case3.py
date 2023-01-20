@@ -56,47 +56,51 @@ bar_width = 0.25
 bar_1_x = [i for i in range(len(WY_server))]
 bar_2_x = [i + bar_width for i in range(len(WY_server))]
 
+# create figure and axes
+fig, ax = plt.subplots(1, 2, figsize=(14.2, 5))
+
 #Server
-plt.bar(bar_1_x, WY_server, width=bar_width, bottom = LMC_WY_server, label='WY* (m = 2^10)', fill = False, hatch = '.O')
-plt.bar(bar_2_x, WY2_server, width=bar_width, bottom = LMC_WY2_server, label='WY** (m = 2^12)', fill = False, hatch = '.O.O')
+ax[0].bar(bar_1_x, WY_server, width=bar_width, bottom = LMC_WY_server, label='WY* (m = 2^10)', fill = False, hatch = '.O')
+ax[0].bar(bar_2_x, WY2_server, width=bar_width, bottom = LMC_WY2_server, label='WY** (m = 2^12)', fill = False, hatch = '.O.O')
 
-plt.bar(bar_1_x, LMC_WY_server, width=bar_width, fill = False, label='LMC-related time', hatch = '///')
-plt.bar(bar_2_x, LMC_WY2_server, width=bar_width, fill = False, hatch = '///')
+ax[0].bar(bar_1_x, LMC_WY_server, width=bar_width, fill = False, label='LMC-related time', hatch = '///')
+ax[0].bar(bar_2_x, LMC_WY2_server, width=bar_width, fill = False, hatch = '///')
 
-plt.xlabel('d', weight='bold')
-plt.ylabel('seconds', weight='bold')
-plt.title('Server average time', weight='bold', size = 14)
-plt.xticks(bar_2_x, x_label)
+ax[0].set_xlabel('d', weight='bold', size = 14)
+ax[0].set_ylabel('seconds', weight='bold', size = 14)
+ax[0].set_title('Server average time', weight='bold', size = 18)
+ax[0].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
-plt.gca().spines['right'].set_visible(False)
-plt.gca().spines['top'].set_visible(False)
+ax[0].spines['right'].set_visible(False)
+ax[0].spines['top'].set_visible(False)
 
-plt.legend(prop={'weight':'bold'})
-plt.show()
+ax[0].legend(prop={'weight':'bold'})
+
 
 #Client
-plt.bar(bar_1_x, WY_client, width=bar_width, bottom = LMC_WY_client, label='WY* (m = 2^10)', fill = False, hatch = '.O')
-plt.bar(bar_2_x, WY2_client, width=bar_width, bottom = LMC_WY2_client, label='WY** (m = 2^12)', fill = False, hatch = '.O.O')
+ax[1].bar(bar_1_x, WY_client, width=bar_width, bottom = LMC_WY_client, label='WY* (m = 2^10)', fill = False, hatch = '.O')
+ax[1].bar(bar_2_x, WY2_client, width=bar_width, bottom = LMC_WY2_client, label='WY** (m = 2^12)', fill = False, hatch = '.O.O')
 
-plt.bar(bar_1_x, LMC_WY_client, width=bar_width, fill = False, label='LMC-related time', hatch = '///')
-plt.bar(bar_2_x, LMC_WY2_client, width=bar_width, fill = False, hatch = '///')
+ax[1].bar(bar_1_x, LMC_WY_client, width=bar_width, fill = False, label='LMC-related time', hatch = '///')
+ax[1].bar(bar_2_x, LMC_WY2_client, width=bar_width, fill = False, hatch = '///')
 
 for i in range(len(WY_client)):
     value = WY_client[i] + LMC_WY_client[i] + 0.5
-    plt.text(bar_1_x[i] - 0.05, value, 'WY*', color = 'black', rotation=90, fontweight='bold')
+    ax[1].text(bar_1_x[i] - 0.05, value, 'WY*', color = 'black', rotation=90, fontweight='bold')
     
     value = WY2_client[i] + LMC_WY2_client[i] + 0.5
-    plt.text(bar_2_x[i] - 0.05, value, 'WY**', color = 'black', rotation=90, fontweight='bold')
+    ax[1].text(bar_2_x[i] - 0.05, value, 'WY**', color = 'black', rotation=90, fontweight='bold')
 
-plt.xlabel('d', weight='bold')
-plt.ylabel('seconds', weight='bold')
-plt.title('Client time', weight='bold', size = 14)
-plt.xticks(bar_2_x, x_label)
+plt.xlabel('d', weight='bold', size = 14)
+ax[1].set_ylabel('seconds', weight='bold', size = 14)
+ax[1].set_title('Client time', weight='bold', size = 18)
+ax[1].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
-plt.gca().spines['right'].set_visible(False)
-plt.gca().spines['top'].set_visible(False)
+ax[1].spines['right'].set_visible(False)
+ax[1].spines['top'].set_visible(False)
 
-plt.legend(prop={'weight':'bold'})
-plt.show()
+ax[1].legend(prop={'weight':'bold'})
+
+plt.savefig('case3.pdf', dpi=300, bbox_inches='tight')
