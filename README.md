@@ -64,6 +64,13 @@ We ran our experiments on **Ubuntu** 22.04.1 LTS environment where the processor
 ## Performance
 The implementation results show that our schemes with extra protection for the Client will increase the **constant** practical time on both servers and the client sides compared to the original PIR. We implemented multiple database sizes and several servers in the system. The overhead of LM is constant with the same size n, so when the database size increases, the percentage of LM time reduces significantly in the total LM-PIR time (see Fig. 1). The computation time for servers and the Client is below one second in most scenarios when the number of colluding servers is k − 1, except in the LM-WY case.
 
+<object data="https://github.com/PIR-PIXR/PIXR/files/10467775/case1.pdf" type="pdf" width="1363.2px" height="432px">
+    <embed src="https://github.com/PIR-PIXR/PIXR/files/10467775/case1.pdf">
+        <p><strong> Fig. 1.</strong> The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where k = 2, t = 1, n = 2^10, and m is changing (2^0, 2^12, 2^14, 2^16). When m increases, the total LM-PIR computation time increases, but the LM computation time parts are constant. It means that the percentage of LMC-related computation time decreases significantly when the vertical database increases.</p>
+    </embed>
+</object>
+
+
 <p align="center">
   <img width="1363.2" height="432" src="https://github.com/PIR-PIXR/PIXR/files/10467775/case1.pdf">
 </p>
