@@ -12,7 +12,7 @@ void mod_r(blst_scalar *a)
     	for (int h = 0; h < 32; h++)
     	{
         	sprintf(str+(h*2), "%02x", R[h]); 
-        }s
+        }
         
         blst_fr order, a_r;
         byte *BLST_381_r = str;
