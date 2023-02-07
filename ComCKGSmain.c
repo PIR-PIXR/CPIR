@@ -60,7 +60,6 @@ int main() {
     	for (int n = 0; n < lengthn; n++)
 	{
 		printf ("\nThe value of n is %d \n", n_value[n]);
-		
 		fprintf(fp, "%d \n", n_value[n]); // write number n to file
 		
 		blst_p2 *G = malloc(sizeof(blst_p2)*(n_value[n]+1));
@@ -84,7 +83,6 @@ int main() {
 		for (int m = 0; m < lengthm; m++)
 		{	
 			printf ("The value of m is %d\n", m_value[m]);
-			
 			fprintf(fp, "%d \n", m_value[m]); // write number m to file
 			
 			mpz_t** answers; //[2][m_value[m] + 1]
