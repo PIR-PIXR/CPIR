@@ -64,7 +64,7 @@ mpz_t** QueriesGen_Client (int position, int n, int k, mpz_t p)
 	return queries;
 }
 
-//The server will respond the anwser when received query
+//The Server will respond the anwsers when received query
 mpz_t** AnwGen_Server (int m, int n, mpz_t** queries, mpz_t** DataBase_T, int k, mpz_t p)
 {			
 	mpz_t** answers; //[k][m_value[j] + 1]
