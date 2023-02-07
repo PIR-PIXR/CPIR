@@ -152,7 +152,7 @@ int main() {
 			
 			s_PIR_time += (double) (stop - start) / CLOCKS_PER_SEC;
 			
-			//coefficients of polynomials in Server i
+			//Server computes y_i = F_i.x and send proof_i to the Client
 		    	for (int ii = 0; ii < k_server[0]; ii++)
 			{
 		    		s_LMC_time += WitnessGen(n_value[n], k_server[0], queries, x, F, H, proof, y, ii, start, stop);
