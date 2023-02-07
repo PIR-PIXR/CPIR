@@ -9,7 +9,7 @@
 
 #define DIGITS 77 //Number of digits in an element
 
-//Create Vandermonde matrix
+//Creating Vandermonde matrix
 mpz_t** vandermonde(int n, mpz_t p) 
 {
 	mpz_t rop;
@@ -35,7 +35,7 @@ mpz_t** vandermonde(int n, mpz_t p)
 	return A;
 }
 
-//A simple method for finding the inverse matrix of Vandermonde matrix
+//Finding the inverse matrix of Vandermonde matrix
 mpz_t* S(int k, int j, int m, unsigned long max_n, long** E_val)
 {
 	mpz_t* S; 
@@ -81,11 +81,9 @@ mpz_t* S(int k, int j, int m, unsigned long max_n, long** E_val)
 		mpz_set_ui (product, 1);
 		for (long j = 0; j < (m - 1); j++)
 		{
-			//printf("E = %d ", E_val[i][j]);
 			if (E_val[i][j] == 1)
 			{
 				mpz_mul_ui (product, product, list[j]);
-				//printf("product = %f ",product);
 			}
 		}
 		mpz_add (S[0], S[0], product);
@@ -94,7 +92,7 @@ mpz_t* S(int k, int j, int m, unsigned long max_n, long** E_val)
 	return S;
 }
 
-//A simple method for finding the inverse matrix of Vandermonde matrix
+//Finding the inverse matrix of Vandermonde matrix
 mpz_t* P(int j, int m)
 {
 	int c;
@@ -103,15 +101,13 @@ mpz_t* P(int j, int m)
 	P = (mpz_t *) malloc(sizeof(mpz_t));
 	mpz_init (P[0]);
 	mpz_init (product);
-
 	c = j;
 	mpz_set_ui (product, 1);
+	
 	for (int i = 1; i <= m; i++)
 	{
-		if (i == j)
-			i++;
+		if (i == j)	i++;
 		mpz_mul_ui (product, product, abs(c - i));
-		//printf("product = %f \n",product);
 	}
 	
 	mpz_set (P[0], product);
@@ -162,19 +158,17 @@ mpz_t** vandermonde_inverse(int k, mpz_t p, long*** E_val)
 	return V_inv;
 }
 
-//Generate all possible distinct points of of a fixed length n with the Hamming weight d
+//Generating all possible distinct points of of a fixed length n with the Hamming weight d
 long** generate(unsigned long n, unsigned long d, unsigned long max_n)
 {
 	long** E_val;
-	
+	long ii = 0, jj = 0;
 	E_val = (long**) malloc(max_n * sizeof(long*));
 	
 	for (long i = 0; i < max_n; i++) 
 	{
 		E_val[i] = (long*) malloc(n * sizeof(long));
 	}
-    
-	long ii = 0, jj = 0;
 	
     	for (long i = 0; i < (1 << n); i++)
     	{
@@ -200,14 +194,13 @@ long** generate(unsigned long n, unsigned long d, unsigned long max_n)
         return E_val;
 }
 
-//Clients creates random queries (binary vectors size alpha*n)
+//Client creates random queries (binary vectors size alpha*n)
 mpz_t** QueriesGen_Client (int i_index, int n, int alpha, int t_private, mpz_t** V, mpz_t p)
 {
 	mpz_t** queries;
 	mpz_t** M;
 	gmp_randstate_t state;
 	gmp_randinit_mt (state);
-	
 	int size_V = t_private + alpha;
 	
 	M = (mpz_t**) malloc(size_V * sizeof(int*));
@@ -244,7 +237,7 @@ mpz_t** QueriesGen_Client (int i_index, int n, int alpha, int t_private, mpz_t**
 	return queries;
 }
 
-//Split Database size m*n to new database size m*alpha*n transpose
+//Splitting Database size m*n to new database size m*alpha*n transpose
 mpz_t** SplitDatabase(int m, int n, int alpha, mpz_t* DataBase, mpz_t* hash_cols, mpz_t p)
 {
 	mpz_t** NewDB_T; //Database after splitting transpose
@@ -336,7 +329,7 @@ double WitnessGen(int n_value, int k_server, int alpha, mpz_t** queries, blst_sc
 	}
 	blst_scalar_from_fr(&y[i], &yi_r);
 		    			
-	//3.3. Sends proof_i to the Client
+	//Sends proof_i to the Client
 	start= clock();
 	open(alpha * n_value, x, F[i], H, &proof[i]);
 	stop = clock();
