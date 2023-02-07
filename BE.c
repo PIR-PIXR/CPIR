@@ -1,8 +1,13 @@
 #include <gmp.h>
 #include <math.h>
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "blst/include/blst.h"
 #include "utils.h"
+#include "LMC.h"
+
+#define DIGITS 77 //Number of digits in an element
 
 //Create Vandermonde matrix
 mpz_t** vandermonde(int n, mpz_t p) 
@@ -300,4 +305,45 @@ void Extract_Client (int alpha, int m, mpz_t** Reconstruct, mpz_t result[m + 1],
 	{
 		mpz_mod (result[i], result[i], p);
 	}
+}
+
+//Server computes y_i = F_i.x and send proof_i to the Client
+double WitnessGen(int n_value, int k_server, int alpha, mpz_t** queries, blst_scalar *x, blst_scalar **F, blst_p1 *H, blst_p1 proof[k_server], blst_scalar y[k_server], int i, clock_t start, clock_t stop)
+{
+	char tmp[DIGITS];
+	double s_time = 0.0;
+	
+	//coefficients of polynomials in Server i
+	for (int j = 1; j <= (n_value * alpha); j++)
+	{
+		mpz_get_str(tmp, 10, queries[i][j - 1]);
+		byte *in = tmp;
+		blst_scalar_from_be_bytes(&F[i][j], in, 32);
+	}
+					
+	blst_fr Fi_r, x_r, yi_r, tmpi_r, sumi_r;
+	blst_fr_from_scalar(&Fi_r, &F[i][1]);
+	blst_fr_from_scalar(&x_r, &x[1]);
+	blst_fr_mul(&yi_r, &Fi_r, &x_r);
+					
+	for (int o = 2; o <= alpha*n_value; o++)
+	{
+		blst_fr_from_scalar(&Fi_r, &F[i][o]);
+		blst_fr_from_scalar(&x_r, &x[o]);
+		blst_fr_mul(&tmpi_r, &Fi_r, &x_r);
+		blst_fr_add(&sumi_r, &yi_r, &tmpi_r);
+		yi_r = sumi_r;
+	}
+	blst_scalar_from_fr(&y[i], &yi_r);
+		    			
+	//3.3. Sends proof_i to the Client
+	start= clock();
+	open(alpha * n_value, x, F[i], H, &proof[i]);
+	stop = clock();
+	
+	s_time = (double) (stop - start) / CLOCKS_PER_SEC;
+	
+	printf("\nLMC: Proof_%d time = %lf seconds", i, s_time);
+	
+	return s_time;
 }
