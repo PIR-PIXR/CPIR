@@ -37,7 +37,7 @@ int** QueriesGen_Client (int position, int n)
 	return queries;
 }
 
-//The server will respond the anwser when received query
+//The Server will respond the anwsers when received query
 mpz_t** AnwGen_Server (int m, int n, int** queries, mpz_t *X_db,  mpz_t *hash_cols, mpz_t p)
 {			
 	mpz_t** answers; //[2][m_value[j] + 1]
@@ -121,7 +121,7 @@ double WitnessGen(int n_value, int k_server, int** queries, blst_scalar *x, blst
 		blst_scalar_from_be_bytes(&F[i][jj], in, 32);
 	}
 				
-	//3.2. Computes y_i = F_i.x and send to the Client
+	//Computes y_i = F_i.x and send to the Client
 	blst_fr Fi_r, x_r, yi_r, tmpi_r, sumi_r;
 	blst_fr_from_scalar(&Fi_r, &F[i][1]);
 	blst_fr_from_scalar(&x_r, &x[1]);
@@ -137,7 +137,7 @@ double WitnessGen(int n_value, int k_server, int** queries, blst_scalar *x, blst
 	}
 	blst_scalar_from_fr(&y[i], &yi_r);
 	    			
-	//3.3. Sends proof_i to the Client
+	//Sends proof_i to the Client
 	start= clock();
 	open(n_value, x, F[i], H, &proof[i]);
 	stop = clock();
