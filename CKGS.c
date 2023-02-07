@@ -1,5 +1,9 @@
 #include <gmp.h>
+#include <time.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include "blst/include/blst.h"
+#include "LMC.h"
 
 #define SIZE 255 //Each element's size is 256 bits
 #define DIGITS 77 //Number of digits in an element
@@ -102,4 +106,43 @@ void Extract_Client (int m, int n, mpz_t p, int** queries, int position, mpz_t**
 			mpz_mod (result[j], result[j], p);
 		}
 	}
+}
+
+//Server computes y_i = F_i.x and send proof_i to the Client
+double WitnessGen(int n_value, int k_server, int** queries, blst_scalar *x, blst_scalar **F, blst_p1 *H, blst_p1 proof[k_server], blst_scalar y[k_server], int i, clock_t start, clock_t stop)
+{
+	char tmp[DIGITS];
+	double s_time = 0.0;
+	
+	for (int jj = 1; jj <= n_value; jj++)
+	{
+		char* buffer = (char*) (&queries[i][jj - 1]);
+		byte *in = buffer;
+		blst_scalar_from_be_bytes(&F[i][jj], in, 32);
+	}
+				
+	//3.2. Computes y_i = F_i.x and send to the Client
+	blst_fr Fi_r, x_r, yi_r, tmpi_r, sumi_r;
+	blst_fr_from_scalar(&Fi_r, &F[i][1]);
+	blst_fr_from_scalar(&x_r, &x[1]);
+	blst_fr_mul(&yi_r, &Fi_r, &x_r);
+				
+	for (int o = 2; o <= n_value; o++)
+	{
+		blst_fr_from_scalar(&Fi_r, &F[i][o]);
+		blst_fr_from_scalar(&x_r, &x[o]);
+		blst_fr_mul(&tmpi_r, &Fi_r, &x_r);
+		blst_fr_add(&sumi_r, &yi_r, &tmpi_r);
+		yi_r = sumi_r;
+	}
+	blst_scalar_from_fr(&y[i], &yi_r);
+	    			
+	//3.3. Sends proof_i to the Client
+	start= clock();
+	open(n_value, x, F[i], H, &proof[i]);
+	stop = clock();
+	s_time = (double) (stop - start) / CLOCKS_PER_SEC;
+	printf("\nLMC: Proof_%d time = %lf seconds", i, s_time);
+	
+	return s_time;
 }
