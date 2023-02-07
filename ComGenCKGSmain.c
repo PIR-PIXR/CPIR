@@ -80,8 +80,6 @@ int main() {
 				F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(n_value[n] + 1));
 			}
 			
-			
-			
 			for (int m = 0; m < lengthm; m++)
 			{	
 				s_PIR_time = 0.0;
@@ -105,7 +103,7 @@ int main() {
 				//----------------------------------------------Step 1: Data Owner-----------------------------------------------//
 				if (!onetime)
 				{
-					//0. Setup LMC
+					//1.0. Setup LMC
 			    		start = clock();
 			    		setup(n_value[n], G, H);
 			    		stop = clock();
@@ -185,39 +183,10 @@ int main() {
 	    			
 	    			s_PIR_time += (double) (stop - start) / CLOCKS_PER_SEC;
 	    			
-	    			//coefficients of polynomials in Server i
+	    			//3.2. Computes y_i = F_i.x and send proof_i to the Client
 			    	for (int ii = 0; ii < k_server[k]; ii++)
 				{
-					for (int jj = 1; jj <= n_value[n]; jj++)
-					{
-						mpz_get_str(tmp, 10, queries[ii][jj - 1]);
-						byte *in = tmp;
-						blst_scalar_from_be_bytes(&F[ii][jj], in, 32);
-					}
-					
-					//3.2. Computes y_i = F_i.x and send to the Client
-					blst_fr Fi_r, x_r, yi_r, tmpi_r, sumi_r;
-		    			blst_fr_from_scalar(&Fi_r, &F[ii][1]);
-		    			blst_fr_from_scalar(&x_r, &x[1]);
-		    			blst_fr_mul(&yi_r, &Fi_r, &x_r);
-					
-					for (int o = 2; o <= n_value[n]; o++)
-		    			{
-						blst_fr_from_scalar(&Fi_r, &F[ii][o]);
-						blst_fr_from_scalar(&x_r, &x[o]);
-						blst_fr_mul(&tmpi_r, &Fi_r, &x_r);
-						blst_fr_add(&sumi_r, &yi_r, &tmpi_r);
-						yi_r = sumi_r;
-		    			}
-		    			blst_scalar_from_fr(&y[ii], &yi_r);
-		    			
-		    			//3.3. Sends proof_i to the Client
-			    		start= clock();
-			    		open(n_value[n], x, F[ii], H, &proof[ii]);
-			    		stop = clock();
-			    		printf("\nLMC: Proof_%d time = %lf seconds", ii, (double) (stop - start) / CLOCKS_PER_SEC);
-			    		
-			    		s_LMC_time += (double) (stop - start) / CLOCKS_PER_SEC;
+			    		s_LMC_time += WitnessGen(n_value[n], k_server[k], queries, x, F, H, proof, y, ii, start, stop);
 				}
 				printf("\n\n");
 			
