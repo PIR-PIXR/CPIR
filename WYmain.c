@@ -327,16 +327,6 @@ int main()
 				    		c_LMC_time += (double) (stop - start) / CLOCKS_PER_SEC;
 					}
 		    		}
-			   	
-			   	mpz_t matrix[degree_d + 1][degree_d + 1];
-		    		
-		    		for (int i = 0; i < degree_d + 1; i++)
-		    		{
-		    			for (int j = 0; j < degree_d + 1; j++)
-		    			{
-		    				mpz_init (matrix[i][j]);
-		    			}
-		    		}
 		    		
 			   	//5.2. Client starts to reconstruct x_i
 			   	start = clock();
