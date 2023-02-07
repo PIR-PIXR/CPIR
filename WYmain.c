@@ -73,7 +73,6 @@ int main()
 		unsigned long max_n = mChoosed(m_mapping, d_mapping[k]);
 		
 		printf ("\nThe value of k is %d \n", k_server[k]);
-			
 		fprintf(fp, "%d \n", k_server[k]); // write number k to file
 		
 		F_Q = (mpz_t**) malloc(k_server[k] * sizeof(int*));
@@ -83,7 +82,6 @@ int main()
 	   	for (int n = 0; n < lengthn; n++)
 	    	{
 	    		printf ("\nThe value of n is %d \n\n", n_value[n]);
-		
 			fprintf(fp, "%d \n", n_value[n]); // write number n to file
 			
 	    		//Finding max_n >= n_value
@@ -182,7 +180,6 @@ int main()
 		   	for (int m = 0; m < lengthm; m++)
 		   	{
 		   		printf ("The value of m is %d\n", m_value[m]);
-		   		
 		   		fprintf(fp, "%d \n", m_value[m]); // write number m to file
 		   		
 		   		s_PIR_time = 0.0;
@@ -288,7 +285,7 @@ int main()
 			    			s_PIR_time += (double) (stop - start) / CLOCKS_PER_SEC;
 
 						//-----------------------------------------------Step 5. Client----------------------------------------------//
-			    			//5.2. Client reconstructs the each value of f'(lambda_h)
+			    			//5.1. Client reconstructs the each value of f'(lambda_h)
 			    			start = clock();
 			    			tmp_derf_lambda = Re_der_f(i, j, t_private, k_server[k], m_value[m], m_mapping, derF_Q[i][j], V_random, lambda_random, p);
 			    				
@@ -312,7 +309,7 @@ int main()
 				   	c_PIR_time += time;
 				}
 				
-				//5.1. Verifies proofi before decoding
+				//5.2. Verifies proofi before decoding
 				for (int ii = 0; ii < k_server[k]; ii++)
 				{
 					for (int ll = 0; ll < (m_mapping + 1); ll++)
@@ -326,7 +323,7 @@ int main()
 					}
 		    		}
 		    		
-			   	//5.2. Client starts to reconstruct x_i
+			   	//5.3. Client starts to reconstruct x_i
 			   	start = clock();
 			   	Reconstruct_Client(degree_d, k_server[k], t_private, m_value[m], lambda_random, result, p, F_Q, derf_lambda);
 			   	stop = clock();
