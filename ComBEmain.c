@@ -57,8 +57,8 @@ int main()
 	double time; //the time counters
 	char tmp[DIGITS];
 	bool verifyPIR;
+	bool onetime = false;
 	clock_t start, stop;
-	
 	double s_PIR_time, c_PIR_time, s_LMC_time, c_LMC_time;
 	
 	FILE *fp;
@@ -86,8 +86,6 @@ int main()
 	mpz_t* hash_cols; //Hash values of each column in the DataBase
 	mpz_t** Answers;
 	mpz_t** Reconstruct;
-	
-	bool onetime = false;
 	
 	for (int k = 0; k < lengthk; k++)
 	{
@@ -190,16 +188,15 @@ int main()
 				//----------------------------------------------Step 1: Data Owner-----------------------------------------------//
 				if (!onetime)
 				{
-					
 					DataBase = (mpz_t *) malloc((m_value[m] * n_value[n]) * sizeof(mpz_t));
-				    	//1.1 Server creates randomly each element in the database.
+				    	//1.1 creates randomly each element in the database.
 					start = clock();
 					DataBase = DbGen_Server(m_value[m], n_value[n], p);
 					stop = clock();
 					printf ("DbGen time = %f seconds\n", (double) (stop - start) / CLOCKS_PER_SEC);
 					
 					hash_cols = (mpz_t *) malloc(n_value[n] * sizeof(mpz_t));
-					//1.2 Server calculates hash values of n db's columns.
+					//1.2 calculates hash values of n db's columns.
 					start = clock();
 				    	hash_cols = HashGen_Server(m_value[m], n_value[n], DataBase, p);
 				    	stop = clock();
@@ -240,7 +237,7 @@ int main()
 				
 			    	//-----------------------------------------------Step 2. Client----------------------------------------------//
 			    	
-				//2.1 Client creates queries (size k*(alpha*n))
+				//2.1. Client creates queries (size k*(alpha*n))
 				start= clock();
 				queries = QueriesGen_Client (i_index, n_value[n], alpha, t_private, V, p);
 				stop = clock();  
