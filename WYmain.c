@@ -242,8 +242,6 @@ int main()
 		    		stop = clock();
 		    		printf("LMC: Commitment time = %lf seconds\n\n", (double) (stop - start) / CLOCKS_PER_SEC);
 		    		
-		    		//s_LMC_time += (double) (stop - start) / CLOCKS_PER_SEC;
-		    		
 		    		for (int i = 0; i < k_server[k]; i++)
 		    		{
 		    			for (int j = 0; j < m_mapping + 1; j++)
