@@ -22,8 +22,8 @@ mpz_t** QueriesGen_Client (int i_index, int n, int alpha, int t_private, mpz_t**
 //Split Database size m*n to new database size m*alpha*n transpose
 mpz_t** SplitDatabase(int m, int n, int alpha, mpz_t* DataBase, mpz_t* hash_cols, mpz_t p);
 
-//After received all anwsers from all servers, the client will extract to get x_i and h(x_i) values
-void Extract_Client (int alpha, int m, mpz_t** Reconstruct, mpz_t result[m + 1], mpz_t p);
-
 //Server computes y_i = F_i.x and send proof_i to the Client
 double WitnessGen(int n_value, int k_server, int alpha, mpz_t** queries, blst_scalar *x, blst_scalar **F, blst_p1 *H, blst_p1 proof[k_server], blst_scalar y[k_server], int i, clock_t start, clock_t stop);
+
+//After received all anwsers from all servers, the client will extract to get x_i and h(x_i) values
+void Extract_Client (int alpha, int m, mpz_t** Reconstruct, mpz_t result[m + 1], mpz_t p);
