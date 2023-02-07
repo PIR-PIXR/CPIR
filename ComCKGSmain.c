@@ -155,37 +155,7 @@ int main() {
 			//coefficients of polynomials in Server i
 		    	for (int ii = 0; ii < k_server[0]; ii++)
 			{
-				for (int jj = 1; jj <= n_value[n]; jj++)
-				{
-					//printf ("q %d ", queries[ii][jj - 1]);
-					char* buffer = (char*) (&queries[ii][jj - 1]);
-					byte *in = buffer;
-					blst_scalar_from_be_bytes(&F[ii][jj], in, 32);
-				}
-				
-				//3.2. Computes y_i = F_i.x and send to the Client
-				blst_fr Fi_r, x_r, yi_r, tmpi_r, sumi_r;
-	    			blst_fr_from_scalar(&Fi_r, &F[ii][1]);
-	    			blst_fr_from_scalar(&x_r, &x[1]);
-	    			blst_fr_mul(&yi_r, &Fi_r, &x_r);
-				
-				for (int o = 2; o <= n_value[n]; o++)
-	    			{
-					blst_fr_from_scalar(&Fi_r, &F[ii][o]);
-					blst_fr_from_scalar(&x_r, &x[o]);
-					blst_fr_mul(&tmpi_r, &Fi_r, &x_r);
-					blst_fr_add(&sumi_r, &yi_r, &tmpi_r);
-					yi_r = sumi_r;
-	    			}
-	    			blst_scalar_from_fr(&y[ii], &yi_r);
-	    			
-	    			//3.3. Sends proof_i to the Client
-		    		start= clock();
-		    		open(n_value[n], x, F[ii], H, &proof[ii]);
-		    		stop = clock();
-		    		printf("\nLMC: Proof_%d time = %lf seconds", ii, (double) (stop - start) / CLOCKS_PER_SEC);
-		    		
-		    		s_LMC_time += (double) (stop - start) / CLOCKS_PER_SEC;
+		    		s_LMC_time += WitnessGen(n_value[n], k_server[0], queries, x, F, H, proof, y, ii, start, stop);
 			}
 			printf("\n\n");
 		
