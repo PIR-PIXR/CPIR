@@ -187,7 +187,7 @@ int main()
 			    	//0.2 Finding inverse of the Vandermonde matrix (V_inv)
 			    	V_inv = vandermonde_inverse(k_server[k], p, E_val);
 				
-				//----------------------------------------------Step 1: Server-----------------------------------------------//
+				//----------------------------------------------Step 1: Data Owner-----------------------------------------------//
 				if (!onetime)
 				{
 					
@@ -213,7 +213,7 @@ int main()
 				{
 					NewDB_T[i] = (mpz_t*) malloc((m_value[m] + 1) * sizeof(mpz_t));
 				}
-				//1.3 Server splits database
+				//1.3 splits database
 				start = clock();
 				NewDB_T = SplitDatabase(m_value[m], n_value[n], alpha, DataBase, hash_cols, p);
 				stop = clock();
@@ -227,7 +227,7 @@ int main()
 					blst_scalar_from_be_bytes(&x[o], in, 32);
 		    		}
 		    		
-		    		//1.4. Server commites to hashes values.
+		    		//1.4. commites to hashes values.
 		    		start = clock();
 		    		com(alpha*n_value[n], x, G, &Com);
 		    		stop = clock();
