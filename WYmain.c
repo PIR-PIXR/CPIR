@@ -236,7 +236,7 @@ int main()
 					blst_scalar_from_be_bytes(&x[o], in, 32);
 		    		}
 		    		
-		    		//3.3. Server commites to hashes values.
+		    		//3.3. Commites to hashes values.
 		    		start = clock();
 		    		com(n_value[n], x, G, &Com);
 		    		stop = clock();
