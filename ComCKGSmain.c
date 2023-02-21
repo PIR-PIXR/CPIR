@@ -63,7 +63,7 @@ int main() {
 		fprintf(fp, "%d \n", n_value[n]); // write number n to file
 		
 		blst_p2 *G = malloc(sizeof(blst_p2)*(n_value[n]+1));
-    		blst_p1 *H = malloc(sizeof(blst_p1)*(2*n_value[n]+1));
+    		blst_p1 *H = malloc(sizeof(blst_p1)*(2 * n_value[n] + 1)*2);
 		blst_scalar *x = malloc(sizeof(blst_scalar)*(n_value[n]+1)); //address of an array of blst_scalar
 		blst_scalar **F; //[2][(n_value[i] + 1)] coefficients of polynomials Fi
 		
@@ -71,12 +71,12 @@ int main() {
 		
 		for (int i = 0; i < k_server[0]; i++) 
 		{
-			F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(n_value[n] + 1));
+			F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(n_value[n] + 1)*2);
 		}
 		
 		//0. Setup LMC
     		start = clock();
-    		setup(n_value[n], G, H);
+    		setup(n_value[n], 1, G, H);
     		stop = clock();
     		printf("\nLMC: Setup = %lf seconds\n\n", (double) (stop - start) / CLOCKS_PER_SEC);
 		
@@ -162,7 +162,7 @@ int main() {
 			for (int ii = 0; ii < k_server[0]; ii++)
 			{
 				start = clock();
-	    			assert(verify(n_value[n], F[ii], &y[ii], G, H, &C[ii], &proof[ii]));
+	    			assert(verify(n_value[n], 1, F[ii], &y[ii], G, H, &C[ii], &proof[ii]));
 	    			stop = clock();
 	    			printf("LMC: Verify y_%d time = %lf seconds\n", ii, (double) (stop - start) / CLOCKS_PER_SEC);
 	    			
@@ -203,6 +203,7 @@ int main() {
 	}
     
     fclose(fp); // close file
+    
     
     return 0;
 }
