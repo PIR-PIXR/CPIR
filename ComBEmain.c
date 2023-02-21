@@ -111,7 +111,7 @@ int main()
 	    		i_index = rand()%n_value[n];
 	    		
 	    		blst_p2 *G = malloc(sizeof(blst_p2) * (alpha * n_value[n] + 1));
-		    	blst_p1 *H = malloc(sizeof(blst_p1) * (2 * alpha * n_value[n] + 1));
+		    	blst_p1 *H = malloc(sizeof(blst_p1) * (2 * alpha * n_value[n] + 1)*2);
 			blst_scalar *x = malloc(sizeof(blst_scalar) * (alpha * n_value[n] + 1)); //address of an array of blst_scalar
 			blst_scalar **F; //[k_server][(alpha * n_value[n] + 1)] coefficients of polynomials Fi
 			
@@ -119,12 +119,12 @@ int main()
 			
 			for (int i = 0; i < k_server[k]; i++) 
 			{
-				F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(alpha * n_value[n] + 1));
+				F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(alpha * n_value[n] + 1)*2);
 			}
 			
 			//0. Setup LMC
 		    	start = clock();
-		    	setup(alpha*n_value[n], G, H);
+		    	setup(alpha*n_value[n], 1, G, H);
 		    	stop = clock();
 		    	printf("\nLMC: Setup = %lf seconds\n\n", (double) (stop - start) / CLOCKS_PER_SEC);
 	    		
@@ -268,7 +268,7 @@ int main()
 				for (int i = 0; i < k_server[k]; i++)
 				{
 					start = clock();
-		    			assert(verify(alpha*n_value[n], F[i], &y[i], G, H, &C[i], &proof[i]));
+		    			assert(verify(alpha*n_value[n], 1, F[i], &y[i], G, H, &C[i], &proof[i]));
 		    			stop = clock();
 		    			printf("LMC: Verify y_%d time = %lf seconds\n", i, (double) (stop - start) / CLOCKS_PER_SEC);
 		    			
