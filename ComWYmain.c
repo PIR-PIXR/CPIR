@@ -154,6 +154,7 @@ int main()
 				F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(n_value[n]+1)*(m_mapping+1));
 			}
 			
+			
 			printf ("-----------------START-------------- \n");
 			printf ("              Desired x_%d \n\n", i_index);
 			
@@ -309,15 +310,12 @@ int main()
 				//5.2. Verifies proofi before decoding
 				for (int ii = 0; ii < k_server[k]; ii++)
 				{
-					for (int ll = 0; ll < (m_mapping + 1); ll++)
-					{
-						start = clock();
-				    		assert(verify(n_value[n], q, F[ii], &y[ii], G, H, &C[ii], &proof[ii]));
-				    		stop = clock();
-				    		printf("LMC: Verify y_[Server_%d][%d] time = %lf seconds\n\n", ii, ll, (double) (stop - start) / CLOCKS_PER_SEC);
+					start = clock();
+				    	assert(verify(n_value[n], q, F[ii], &y[ii], G, H, &C[ii], &proof[ii]));
+				    	stop = clock();
+				    	printf("LMC: Verify y_[Server_%d] time = %lf seconds\n\n", ii, (double) (stop - start) / CLOCKS_PER_SEC);
 				    		
-				    		c_LMC_time += (double) (stop - start) / CLOCKS_PER_SEC;
-					}
+				    	c_LMC_time += (double) (stop - start) / CLOCKS_PER_SEC;
 		    		}
 			   	
 			   	//5.3. Client starts to reconstruct x_i
