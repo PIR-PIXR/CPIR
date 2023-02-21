@@ -154,14 +154,6 @@ int main()
 				F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(n_value[n]+1)*(m_mapping+1));
 			}
 			
-			for (int i = 0; i < k_server[k]; i++) 
-			{	
-				for ( int j = 0; j < (m_mapping+1); j++)
-				{
-					F[i][j] = (blst_scalar*) malloc(sizeof(blst_scalar)*(n_value[n]+1));
-				}
-			}
-			
 			printf ("-----------------START-------------- \n");
 			printf ("              Desired x_%d \n\n", i_index);
 			
