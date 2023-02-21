@@ -139,7 +139,7 @@ double WitnessGen(int n_value, int k_server, int** queries, blst_scalar *x, blst
 	    			
 	//Sends proof_i to the Client
 	start= clock();
-	open(n_value, x, F[i], H, &proof[i]);
+	open(n_value, 1, x, F[i], H, &proof[i]);
 	stop = clock();
 	s_time = (double) (stop - start) / CLOCKS_PER_SEC;
 	printf("\nLMC: Proof_%d time = %lf seconds", i, s_time);
