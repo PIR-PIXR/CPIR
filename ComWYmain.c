@@ -80,8 +80,7 @@ int main()
 		printf ("\nThe value of k is %d \n", k_server[k]);
 		fprintf(fp, "%d \n", k_server[k]); // write number k to file
 		
-		m_mapping = 1;
-		//m_mapping = O(d*n^(1/d)) (e.g., m_mapping = 14, d = 4)
+		m_mapping = 1; //m_mapping = O(d*n^(1/d)) (e.g., m_mapping = 14, d = 4)
 		unsigned long max_n = mChoosed(m_mapping, d_mapping[k]);
 		
 		F_Q = (mpz_t**) malloc(k_server[k] * sizeof(int*));
@@ -101,6 +100,7 @@ int main()
 			}
 			
 			int m_original = m_mapping;
+			int q  = m_mapping + 1; // q is the number of linear comb
 			
 			printf ("m_mapping = %d \n", m_mapping);
 			
@@ -137,21 +137,21 @@ int main()
 			i_index = rand()%n_value[n];
 			
 			blst_p2 Com; //commitment of x
-			blst_p2 C[k_server[k]][m_mapping+1]; 
-		    	blst_scalar y[k_server[k]][m_mapping+1]; //e.g., y1 = F1.x ; y2 = F2.x for 2 servers
-		    	blst_p1 proof[k_server[k]][m_mapping+1]; //proofs
+			blst_p2 C[k_server[k]]; 
+		    	blst_scalar y[m_mapping + 1]; //e.g., y1 = F1.x ; y2 = F2.x for 2 servers
+		    	blst_p1 proof[k_server[k]]; //proofs
 				
 			blst_p2 *G = malloc(sizeof(blst_p2)*(n_value[n]+1));
-		    	blst_p1 *H = malloc(sizeof(blst_p1)*(2*n_value[n]+1));
+		    	blst_p1 *H = malloc(sizeof(blst_p1)*(2*n_value[n]+1)*(q+1));
 			blst_scalar *x = malloc(sizeof(blst_scalar)*(n_value[n]+1)); //address of an array of blst_scalar
 			
-			blst_scalar ***F; //[k_server][m_mapping + 1][(n_value+1)] coefficients of polynomials Fi
+			blst_scalar **F; //[k_server][m_mapping + 1][(n_value+1)] coefficients of polynomials Fi
 			
-			F = (blst_scalar***) malloc(sizeof(blst_scalar**) *k_server[k]);
+			F = (blst_scalar**) malloc(sizeof(blst_scalar*) *k_server[k]);
 			
 			for (int i = 0; i < k_server[k]; i++) 
 			{
-				F[i] = (blst_scalar**) malloc(sizeof(blst_scalar*)*(m_mapping+1));
+				F[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(n_value[n]+1)*(m_mapping+1));
 			}
 			
 			for (int i = 0; i < k_server[k]; i++) 
@@ -211,7 +211,7 @@ int main()
 		    		//----------------------------------------------Step 3: Data Owner-----------------------------------------------//
 		    		//3.0. Setup LMC
 				start = clock();
-				setup(n_value[n], G, H);
+				setup(n_value[n], q, G, H);
 				stop = clock();
 				printf("\nLMC: Setup = %lf seconds\n\n", (double) (stop - start) / CLOCKS_PER_SEC);
 				    	
@@ -250,11 +250,7 @@ int main()
 		    		
 		    		for (int i = 0; i < k_server[k]; i++)
 		    		{
-		    			for (int j = 0; j < m_mapping + 1; j++)
-		    			{
-		    				C[i][j] = Com;
-		    			}
-		    			
+		    			C[i] = Com;	
 		    		}
 		    		
 		    		//----------------------------------------------Step 4: Server-----------------------------------------------//
@@ -324,7 +320,7 @@ int main()
 					for (int ll = 0; ll < (m_mapping + 1); ll++)
 					{
 						start = clock();
-				    		assert(verify(n_value[n], F[ii][ll], &y[ii][ll], G, H, &C[ii][ll], &proof[ii][ll]));
+				    		assert(verify(n_value[n], q, F[ii], &y[ii], G, H, &C[ii], &proof[ii]));
 				    		stop = clock();
 				    		printf("LMC: Verify y_[Server_%d][%d] time = %lf seconds\n\n", ii, ll, (double) (stop - start) / CLOCKS_PER_SEC);
 				    		
