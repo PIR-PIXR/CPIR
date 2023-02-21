@@ -27,10 +27,10 @@ mpz_t *DerivativeF_Server(int n_value, int m_value, int m_mapping, int z_pos, mp
 mpz_t *Re_der_f(int server_ID, int l_pos, int t_private, int k_server, int m_value, int m_mapping, mpz_t *derF_Q, mpz_t V_random[t_private][m_mapping], mpz_t lambda_random[k_server][t_private], mpz_t p);
 
 //coefficients of polynomials in Server i for LMC
-void coefficients(mpz_t coef, int n_value, int** E_val, int k, int m_mapping, mpz_t queries_Q[k][m_mapping], char tmp[DIGITS], mpz_t p, blst_scalar ***F, int i);
+void coefficients(mpz_t coef, int n_value, int** E_val, int k, int m_mapping, mpz_t queries_Q[k][m_mapping], char tmp[DIGITS], mpz_t p, blst_scalar **F, int i);
 
 //Server computes y_i = F_i.x and send proof_i to the Client
-double WitnessGen(int m_mapping, int k_server, int n_value, blst_scalar *x, blst_scalar ***F, blst_p1 *H, blst_p1 proof[k_server][m_mapping+1], blst_scalar y[k_server][m_mapping+1], int i, clock_t start, clock_t stop);
+double WitnessGen(int m_mapping, int k_server, int n_value, blst_scalar *x, blst_scalar **F, blst_p1 *H, blst_p1 proof[k_server], blst_scalar y[k_server], int i, clock_t start, clock_t stop);
 
 //Client starts to reconstruct x_i
 void Reconstruct_Client(int degree_d, int k_server, int t_private, int m_value, mpz_t lambda_random[k_server][t_private], mpz_t result[m_value + 1], mpz_t p, mpz_t** F_Q, mpz_t** derf_lambda);
