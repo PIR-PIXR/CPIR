@@ -262,8 +262,8 @@ mpz_t *Re_der_f(int server_ID, int l_pos, int t_private, int k_server, int m_val
 
 
 //coefficients of polynomials in Server i for LMC
-void coefficients(mpz_t coef, int n_value, int** E_val, int k, int m_mapping, mpz_t queries_Q[k][m_mapping], char tmp[DIGITS], mpz_t p, blst_scalar ***F, int i)
-{
+void coefficients(mpz_t coef, int n_value, int** E_val, int k, int m_mapping, mpz_t queries_Q[k][m_mapping], char tmp[DIGITS], mpz_t p, blst_scalar **F, int i)
+{       
 	for (int iii = 1; iii <= n_value; iii++)
 	{	
 		mpz_set_ui (coef, 1);
@@ -276,65 +276,69 @@ void coefficients(mpz_t coef, int n_value, int** E_val, int k, int m_mapping, mp
 				mpz_mul (coef, coef, queries_Q[i][jjj]);
 			}
 		}
+		mpz_mod (coef, coef, p);
+		mpz_get_str(tmp, 10, coef);
+		byte *in = tmp;
+		//blst_scalar_from_be_bytes(&F[i][0][iii], in, 32);
+		blst_scalar_from_be_bytes(F[i] + iii, in, 32);
+						
+		//coefficients of polynomials in Server i as for derivative F/z at Q
+		for (int pos = 0; pos < m_mapping; pos ++)
+		{
+			mpz_set_ui (coef, 1);
+			if (E_val[iii - 1][pos] == 1)
+			{
+				for (int jjj = 0; jjj < m_mapping; jjj++)
+				{
+					//Multiplies all z_l at E(i)_l = 1
+					if (E_val[iii - 1][jjj] == 1 && jjj != pos)
+					{
+						mpz_mul (coef, coef, queries_Q[i][jjj]);
+					}
+				}
+
+			}
 			mpz_mod (coef, coef, p);
 			mpz_get_str(tmp, 10, coef);
-			byte *in = tmp;
-			blst_scalar_from_be_bytes(&F[i][0][iii], in, 32);
-						
-			//coefficients of polynomials in Server i as for derivative F/z at Q
-			for (int pos = 0; pos < m_mapping; pos ++)
-			{
-				mpz_set_ui (coef, 1);
-				if (E_val[iii - 1][pos] == 1)
-				{
-					for (int jjj = 0; jjj < m_mapping; jjj++)
-					{
-						//Multiplies all z_l at E(i)_l = 1
-						if (E_val[iii - 1][jjj] == 1 && jjj != pos)
-						{
-							mpz_mul (coef, coef, queries_Q[i][jjj]);
-						}
-					}
-
-				}
-				mpz_mod (coef, coef, p);
-				mpz_get_str(tmp, 10, coef);
-				in = tmp;
-				blst_scalar_from_be_bytes(&F[i][pos + 1][iii], in, 32);
-			}
+			in = tmp;
+			//blst_scalar_from_be_bytes(&F[i][pos + 1][iii], in, 32);
+			blst_scalar_from_be_bytes(F[i] + (pos + 1)*(n_value+1) + iii, in, 32);
+		}
 	}
 }
 
 //Server computes y_i = F_i.x and send proof_i to the Client
-double WitnessGen(int m_mapping, int k_server, int n_value, blst_scalar *x, blst_scalar ***F, blst_p1 *H, blst_p1 proof[k_server][m_mapping+1], blst_scalar y[k_server][m_mapping+1], int i, clock_t start, clock_t stop)
+double WitnessGen(int m_mapping, int k_server, int n_value, blst_scalar *x, blst_scalar **F, blst_p1 *H, blst_p1 proof[k_server], blst_scalar y[m_mapping + 1], int i, clock_t start, clock_t stop)
 {
 	double s_time = 0.0;
-	
+    
 	for (int l = 0; l < (m_mapping + 1); l++)
 	{
 		blst_fr Fi_r, x_r, yi_r, tmpi_r, sumi_r;
-		blst_fr_from_scalar(&Fi_r, &F[i][l][1]);
-		blst_fr_from_scalar(&x_r, &x[1]);
+		//blst_fr_from_scalar(&Fi_r, &F[i][l][1]);
+		blst_fr_from_scalar(&Fi_r, F[i] + l*(n_value+1) + 1);
+		blst_fr_from_scalar(&x_r, x + 1);
 		blst_fr_mul(&yi_r, &Fi_r, &x_r);
 		    			
 		for (int o = 2; o <= n_value; o++)
 		{
-			blst_fr_from_scalar(&Fi_r, &F[i][l][o]);
-			blst_fr_from_scalar(&x_r, &x[o]);
+			blst_fr_from_scalar(&Fi_r, F[i] + l*(n_value+1) + o);
+			blst_fr_from_scalar(&x_r, x + o);
 			blst_fr_mul(&tmpi_r, &Fi_r, &x_r);
 			blst_fr_add(&sumi_r, &yi_r, &tmpi_r);
 			yi_r = sumi_r;
 		}
-		blst_scalar_from_fr(&y[i][l], &yi_r);
-		    				
-		//4.3. Sends proof_i to the Client as for F_Q
-		start = clock();
-		open(n_value, x, F[i][l], H, &proof[i][l]);
-		stop = clock();
-		printf("LMC: Proof[Server_%d][%d] time = %lf seconds\n\n", i, l, (double) (stop - start) / CLOCKS_PER_SEC);
-			    			
-		s_time += (double) (stop - start) / CLOCKS_PER_SEC;
+		blst_scalar_from_fr(y + l, &yi_r);
 	}
+	
+	//4.3. Sends proof_i to the Client as for F_Q
+	start = clock();
+	open(n_value, m_mapping + 1, x, F[i], H, &proof[i]);
+	stop = clock();
+	printf("LMC: Proof[Server_%d] time = %lf seconds\n\n", i, (double) (stop - start) / CLOCKS_PER_SEC);
+			    			
+	s_time += (double) (stop - start) / CLOCKS_PER_SEC;
+	
 	return s_time;
 }
 
