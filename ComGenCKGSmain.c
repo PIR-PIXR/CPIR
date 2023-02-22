@@ -18,7 +18,7 @@
 #define R "73eda753299d7d483339d80809a1d80553bda402fffe5bfeffffffff00000001" //R is prime number in BLS12-381. It is also the prime number p in Z_p
 
 int main() {
-	//case4: t = 1, k - 1, n = 2^10, m = 2^16 running k (3, 4, 5, 6, 7, 8, 9, 10)
+	//case4: t = 1, k - 1, n = 2^10, m = 2^12 running k (3, 4, 5, 6)
     	//n_value is the number of columns in the database
 	int n_value[] = {1024};
 	//m_value is the number of rows in the database
