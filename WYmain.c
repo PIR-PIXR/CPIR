@@ -27,7 +27,7 @@ int main()
 	//n_value is the number of columns in the database
 	int n_value[] = {1024};
 	//m_value is the number of rows in the database
-	int m_value[] = {1024};
+	int m_value[] = {4096}; //or 1024
 	int k_server[] = {2, 3, 3, 4}; // 2*k >= d_mapping*t_private + 1
 	int d_mapping[] = {3, 4, 5, 6};
 	int t_private = 1;
