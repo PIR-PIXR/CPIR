@@ -16,17 +16,17 @@
 #define R "73eda753299d7d483339d80809a1d80553bda402fffe5bfeffffffff00000001" //R is prime number in BLS12-381. It is also the prime number p in Z_p
 
 int main() {
-	/*//case1: k = 2, t = 1, n = 2^10: running m (1, 1024, 4096, 16384, 65536)
+	//case1: k = 2, t = 1, n = 2^10: running m (1, 1024, 4096, 16384, 65536)
     	//n_value is the number of columns in the database
 	int n_value[] = {1024};
 	//m_value is the number of rows in the database
-	int m_value[] = {1, 1024, 4096, 16384, 65536};*/
+	int m_value[] = {1, 1024, 4096, 16384, 65536};
 	
-	//case2: k = 2, t = 1, m = 2^10: running n (256, 1024, 4096, 16384, 65536)
+	/*//case2: k = 2, t = 1, m = 2^10: running n (256, 1024, 4096)
 	//n_value is the number of columns in the database
 	int n_value[] = {256, 1024, 4096};
 	//m_value is the number of rows in the database
-	int m_value[] = {1024};
+	int m_value[] = {1024};*/
 	
 	//k is the number of servers
 	int k_server[] = {2};
@@ -40,8 +40,8 @@ int main() {
 	double s_PIR_time, c_PIR_time, s_LMC_time, c_LMC_time;
 	
 	FILE *fp;
-	//fp = fopen("graphs/case1.txt", "a+"); // open file for reading and writing (append if file exists)
-	fp = fopen("graphs/case2.txt", "a+"); // open file for reading and writing (append if file exists)
+	fp = fopen("graphs/case1.txt", "a+"); // open file for reading and writing (append if file exists)
+	//fp = fopen("graphs/case2.txt", "a+"); // open file for reading and writing (append if file exists)
 	
 	//initialization of a prime number p
 	mpz_t p;
