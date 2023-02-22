@@ -86,7 +86,14 @@ void com(const int n, const blst_scalar *x, const blst_p2 *G, blst_p2* out_C)
 
 void open(const int n, const int q, const blst_scalar *x, const blst_scalar *F, const blst_p1 *H, blst_p1 *out_proof)
 {
-    	blst_scalar s[q+1][2*n+1];
+    	blst_scalar** s; //s[q+1][2*n+1]
+    	s = (blst_scalar**) malloc(sizeof(blst_scalar*) *(q + 1));
+			
+	for (int i = 0; i < (q + 1); i++) 
+	{
+		s[i] = (blst_scalar*) malloc(sizeof(blst_scalar)*(2*n + 1));
+	}
+			
     	blst_fr F_r, x_r, tmp_mul_r, s_r;
     	uint64_t zero[4] = {0, 0, 0, 0};
     	int delta, j;
