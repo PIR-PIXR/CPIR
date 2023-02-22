@@ -51,7 +51,7 @@ We ran our experiments on **Ubuntu** 22.04.1 LTS environment where the processor
 ### Executing LM-WY
     $ gcc -o ComWY ComWYmain.c database.c LMC.c verifyhash.c WY.c utils.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComWY
-#### Or
+#### or
     $ gcc -o WY WYmain.c database.c LMC.c verifyhash.c WY.c utils.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./WY
 ### Executing LM-BE
