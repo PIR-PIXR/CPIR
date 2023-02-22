@@ -33,7 +33,7 @@ int main()
 	int t_private = 1;
 	int degree_d = d_mapping[0]*t_private;
 	
-	/*//case2: k = 2, t = 1, m = 2^10: running n (256, 1024, 4096, 16384, 65536)
+	/*//case2: k = 2, t = 1, m = 2^10: running n (256, 1024, 4096)
 	//n_value is the number of columns in the database
 	int n_value[] = {256, 1024, 4096};
 	//m_value is the number of rows in the database
