@@ -19,16 +19,16 @@
 
 int main() 
 {
-	/*//case1: k = 2, t = 1, n = 2^10: running m (1, 1024, 4096, 16384, 65536)
+	//case1: k = 2, t = 1, n = 2^10: running m (1, 1024, 4096, 16384, 65536)
     	//n_value is the number of columns in the database
 	int n_value[] = {1024};
 	//m_value is the number of rows in the database
 	int m_value[] = {1, 1024, 4096, 16384, 65536};
 	//k is the number of servers
 	int k_server[] = {2}; //k = size_V
-	int t_private = 1;*/
+	int t_private = 1;
 	
-	/*//case2: k = 2, t = 1, m = 2^10: running n (256, 1024, 4096, 16384, 65536)
+	/*//case2: k = 2, t = 1, m = 2^10: running n (256, 1024, 4096)
 	//n_value is the number of columns in the database
 	int n_value[] = {256, 1024, 4096};
 	//m_value is the number of rows in the database
@@ -37,14 +37,14 @@ int main()
 	int k_server[] = {2}; //k = size_V
 	int t_private = 1;*/
 	
-	//case4 or 5: t = k - 1 or 1, n = 2^10, m = 64 running k (3, 4, 5)
+	/*//case4 (BE*) or case5 (BE**): t = k - 1 or 1 respectively, n = 2^10, m = 64 running k (3, 4, 5)
 	//n_value is the number of columns in the database
 	int n_value[] = {1024};
 	//m_value is the number of rows in the database
 	int m_value[] = {4096};
 	//k is the number of servers
 	int k_server[] = {3, 4, 5, 6}; //k = size_V
-	int t_private; //t = k - 1
+	int t_private;*/
 	
 	int alpha; //alpha = k - t_private
 	int i_index;
@@ -62,9 +62,9 @@ int main()
 	double s_PIR_time, c_PIR_time, s_LMC_time, c_LMC_time;
 	
 	FILE *fp;
-	//fp = fopen("graphs/case1.txt", "a+"); // open file for reading and writing (append if file exists)
+	fp = fopen("graphs/case1.txt", "a+"); // open file for reading and writing (append if file exists)
 	//fp = fopen("graphs/case2.txt", "a+"); // open file for reading and writing (append if file exists)
-	fp = fopen("graphs/case4.txt", "a+"); // open file for reading and writing (append if file exists)
+	//fp = fopen("graphs/case4.txt", "a+"); // open file for reading and writing (append if file exists)
 	
 	//initialization of a prime number p
 	mpz_t p;
