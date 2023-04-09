@@ -68,14 +68,14 @@ ax[0].bar(bar_2_x, LMC_WY2_server, width=bar_width, fill = False, hatch = '///')
 
 ax[0].set_xlabel('d', weight='bold', size = 14)
 ax[0].set_ylabel('seconds', weight='bold', size = 14)
-ax[0].set_title('Server average time', weight='bold', size = 18)
+ax[0].set_title('Server average elapsed time', weight='bold', size = 16)
 ax[0].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
 ax[0].spines['right'].set_visible(False)
 ax[0].spines['top'].set_visible(False)
 
-ax[0].legend(prop={'weight':'bold'})
+ax[0].legend(prop={'weight':'bold'}, loc=(0.48 ,0.81))
 
 
 #Client
@@ -86,15 +86,15 @@ ax[1].bar(bar_1_x, LMC_WY_client, width=bar_width, fill = False, label='LMC-rela
 ax[1].bar(bar_2_x, LMC_WY2_client, width=bar_width, fill = False, hatch = '///')
 
 for i in range(len(WY_client)):
-    value = WY_client[i] + LMC_WY_client[i] + 0.5
+    value = WY_client[i] + LMC_WY_client[i] + 0.2
     ax[1].text(bar_1_x[i] - 0.05, value, 'WY*', color = 'black', rotation=90, fontweight='bold')
     
-    value = WY2_client[i] + LMC_WY2_client[i] + 0.5
+    value = WY2_client[i] + LMC_WY2_client[i] + 0.2
     ax[1].text(bar_2_x[i] - 0.05, value, 'WY**', color = 'black', rotation=90, fontweight='bold')
 
 plt.xlabel('d', weight='bold', size = 14)
 ax[1].set_ylabel('seconds', weight='bold', size = 14)
-ax[1].set_title('Client time', weight='bold', size = 18)
+ax[1].set_title('Client elapsed time', weight='bold', size = 16)
 ax[1].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
