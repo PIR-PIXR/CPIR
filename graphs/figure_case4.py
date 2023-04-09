@@ -92,7 +92,7 @@ for i in range(len(CKGS_server)):
     
 ax[0].set_xlabel('k', weight='bold', size = 14)
 ax[0].set_ylabel('seconds', weight='bold', size = 14)
-ax[0].set_title('Server average time', weight='bold', size = 18)
+ax[0].set_title('Server average elapsed time', weight='bold', size = 16)
 ax[0].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
@@ -123,7 +123,7 @@ for i in range(len(CKGS_server)):
     
 ax[1].set_xlabel('k', weight='bold', size = 14)
 ax[1].set_ylabel('seconds', weight='bold', size = 14)
-ax[1].set_title('Client time', weight='bold', size = 18)
+ax[1].set_title('Client elapsed time', weight='bold', size = 16)
 ax[1].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
