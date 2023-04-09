@@ -81,18 +81,18 @@ ax[0].bar(bar_2_x, LMC_WY_server, width=bar_width, fill = False, hatch = '///')
 ax[0].bar(bar_3_x, LMC_BE_server, width=bar_width, fill = False, hatch = '///')
 
 for i in range(len(CKGS_server)):
-    value = CKGS_server[i] + LMC_CKGS_server[i] + 2
+    value = CKGS_server[i] + LMC_CKGS_server[i] + 1
     ax[0].text(bar_1_x[i] - 0.05, value, '2-CKGS', color = 'black', rotation=90, fontweight='bold')
     
-    value = WY_server[i] + LMC_WY_server[i] + 2
+    value = WY_server[i] + LMC_WY_server[i] + 1
     ax[0].text(bar_2_x[i] - 0.05, value, 'WY', color = 'black', rotation=90, fontweight='bold')
     
-    value = BE_server[i] + LMC_BE_server[i] + 2
+    value = BE_server[i] + LMC_BE_server[i] + 1
     ax[0].text(bar_3_x[i] - 0.05, value, 'BE', color = 'black', rotation=90, fontweight='bold')
 
 ax[0].set_xlabel('n', weight='bold', size = 14)
 ax[0].set_ylabel('seconds', weight='bold', size = 14)
-ax[0].set_title('Server average time', weight='bold', size = 18)
+ax[0].set_title('Server average elapsed time', weight='bold', size = 16)
 ax[0].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
@@ -123,7 +123,7 @@ for i in range(len(CKGS_server)):
 
 ax[1].set_xlabel('n', weight='bold', size = 14)
 ax[1].set_ylabel('seconds', weight='bold', size = 14)
-ax[1].set_title('Client time', weight='bold', size = 18)
+ax[1].set_title('Client elapsed time', weight='bold', size = 16)
 ax[1].set_xticks(bar_2_x, x_label)
 
 # remove top and right spines
