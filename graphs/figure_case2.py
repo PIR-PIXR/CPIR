@@ -49,7 +49,7 @@ for i in range(12, 24, 4):
 	LMC_WY_server.append(times[i])
 	i += 1
 	LMC_WY_client.append(times[i])
-#LM-BE	
+#LM-BE
 for i in range(24, 36, 4):
 	BE_server.append(times[i])
 	i += 1
@@ -60,7 +60,7 @@ for i in range(24, 36, 4):
 	LMC_BE_client.append(times[i])
 
 #Server side
-x_label = ['2^8', '2^10', '2^12']
+x_label = ['$2^{8}$', '$2^{10}$', '$2^{12}$']
 
 bar_width = 0.25
 
@@ -83,17 +83,23 @@ ax[0].bar(bar_3_x, LMC_BE_server, width=bar_width, fill = False, hatch = '///')
 for i in range(len(CKGS_server)):
     value = CKGS_server[i] + LMC_CKGS_server[i] + 1
     ax[0].text(bar_1_x[i] - 0.05, value, '2-CKGS', color = 'black', rotation=90, fontweight='bold')
-    
+
     value = WY_server[i] + LMC_WY_server[i] + 1
     ax[0].text(bar_2_x[i] - 0.05, value, 'WY', color = 'black', rotation=90, fontweight='bold')
-    
+
     value = BE_server[i] + LMC_BE_server[i] + 1
     ax[0].text(bar_3_x[i] - 0.05, value, 'BE', color = 'black', rotation=90, fontweight='bold')
 
-ax[0].set_xlabel('n', weight='bold', size = 14)
-ax[0].set_ylabel('seconds', weight='bold', size = 14)
+ax[0].set_xlabel('n', weight='bold', size = 15)
+ax[0].set_ylabel('seconds', weight='bold', size = 15)
 ax[0].set_title('Server average elapsed time', weight='bold', size = 16)
 ax[0].set_xticks(bar_2_x, x_label)
+
+# Increase the size of the x-axis tick labels
+ax[0].tick_params(axis='x', labelsize=14)
+
+# Increase the size of the y-axis tick labels
+ax[0].tick_params(axis='y', labelsize=14)
 
 # remove top and right spines
 ax[0].spines['right'].set_visible(False)
@@ -114,17 +120,23 @@ ax[1].bar(bar_3_x, LMC_BE_client, width=bar_width, fill = False, hatch = '///')
 for i in range(len(CKGS_server)):
     value = CKGS_client[i] + LMC_CKGS_client[i] + 0.5
     ax[1].text(bar_1_x[i] - 0.05, value, '2-CKGS', color = 'black', rotation=90, fontweight='bold')
-    
+
     value = WY_client[i] + LMC_WY_client[i] + 0.5
     ax[1].text(bar_2_x[i] - 0.05, value, 'WY', color = 'black', rotation=90, fontweight='bold')
-    
+
     value = BE_client[i] + LMC_BE_client[i] + 0.5
     ax[1].text(bar_3_x[i] - 0.05, value, 'BE', color = 'black', rotation=90, fontweight='bold')
 
-ax[1].set_xlabel('n', weight='bold', size = 14)
-ax[1].set_ylabel('seconds', weight='bold', size = 14)
+ax[1].set_xlabel('n', weight='bold', size = 15)
+ax[1].set_ylabel('seconds', weight='bold', size = 15)
 ax[1].set_title('Client elapsed time', weight='bold', size = 16)
 ax[1].set_xticks(bar_2_x, x_label)
+
+# Increase the size of the x-axis tick labels
+ax[1].tick_params(axis='x', labelsize=14)
+
+# Increase the size of the y-axis tick labels
+ax[1].tick_params(axis='y', labelsize=14)
 
 # remove top and right spines
 ax[1].spines['right'].set_visible(False)
