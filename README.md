@@ -96,6 +96,9 @@ This work was supported by the Australian Research Council through the Discovery
 ## REFERENCES
 
 [LM] R. W. Lai and G. Malavolta, “Subvector commitments with application to succinct arguments,” in Advances in Cryptology–CRYPTO 2019: 39th Annual International Cryptology Conference, Santa Barbara, CA, USA, August 18–22, 2019, Proceedings, Part I 39. Springer, 2019, pp. 530–560.
+
 [CKGS] B. Chor, E. Kushilevitz, O. Goldreich, and M. Sudan, “Private information retrieval,” Journal of the ACM (JACM), vol. 45, no. 6, pp. 965–981, 1998.
+
 [WY] D. Woodruff and S. Yekhanin, “A geometric approach to information-theoretic private information retrieval,” in 20th Annual IEEE Conference on Computational Complexity (CCC’05). IEEE, 2005, pp. 275–284.
+
 [BE] R. Bitar and S. El Rouayheb, “Staircase-pir: Universally robust private information retrieval,” in 2018 IEEE Information Theory Workshop (ITW). IEEE, 2018, pp. 1–5.
