@@ -5,7 +5,7 @@
 # CPIR: A "Committed Private Information Retrieval" Library that achieves high performance and flexibility.
 
 ## Abstract
-A private information retrieval (PIR) scheme allows a client to retrieve a data item x_i among n items x_1, x_2, . . . , x_n from k servers, without revealing what i is even when t < k servers collude and try to learn i. Such a PIR scheme is said to be t-private. A PIR scheme is v-verifiable if the client can verify the correctness of the retrieved x_i even when v ≤ k servers are colluding and try to fool the client by sending manipulated data. Most of the previous works in the literature on PIR assumed that v < k, leaving the case of all-colluding servers open. We propose a generic method that combines a linear map commitment (LMC) and an arbitrary linear PIR scheme to produce a k-verifiable PIR scheme, termed a committed PIR scheme. Such a scheme guarantees that even in the worst scenario when all servers are under the control of an attacker, although the privacy is unavoidably lost, the client won’t be fooled into accepting an incorrect x_i. A committed PIR can also provide accountability and Byzantine-robustness, which allows the client to tell which servers have sent incorrect data and then recover the correct data, albeit at the cost of heavier computation. We demonstrate the practicality of the committed PIR schemes by implementing the combinations of an LMC and three well-known PIR schemes on top of the GMP library and blst, the current fastest C library for pairings on elliptic curves. You can find a copy of the paper [here](https://arxiv.org/abs/2302.01733).
+A private information retrieval (PIR) scheme allows a client to retrieve a data item x_i among n items x_1, x_2, . . . , x_n from k servers, without revealing what i is even when t < k servers collude and try to learn i. Such a PIR scheme is said to be t-private. A PIR scheme is v-verifiable if the client can verify the correctness of the retrieved x_i even when v ≤ k servers are colluding and try to fool the client by sending manipulated data. Most of the previous works in the literature on PIR assumed that v < k, leaving the case of all-colluding servers open. We propose a generic method that combines a linear map commitment (LMC) and an arbitrary linear PIR scheme to produce a k-verifiable PIR scheme, termed a committed PIR scheme. Such a scheme guarantees that even in the worst scenario when all servers are under the control of an attacker, although the privacy is unavoidably lost, the client won’t be fooled into accepting an incorrect x_i. A committed PIR can also provide accountability and Byzantine-robustness, which allows the client to tell which servers have sent incorrect data and then recover the correct data, albeit at the cost of heavier computation. We demonstrate the practicality of the committed PIR schemes by implementing the combinations of an LMC and three well-known PIR schemes on top of the GMP library and blst, the current fastest C library for pairings on elliptic curves. You can find a copy of the paper [here](https://arxiv.org/abs/2302.01733) or at [ESORICS 2023](https://link.springer.com/chapter/10.1007/978-3-031-50594-2_20).
 
 ---
 ## Main Contributions
@@ -46,7 +46,7 @@ We ran our experiments on **Ubuntu** 22.04.1 LTS environment where the processor
     $ gcc -o ComCKGS ComCKGSmain.c database.c LMC.c verifyhash.c CKGS.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComCKGS
 ### Executing LM-CKGS (k-CKGS)
-    $ gcc ComGenCKGS ComGenCKGSmain.c database.c LMC.c verifyhash.c GenCKGS.c utils.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
+    $ gcc -o ComGenCKGS ComGenCKGSmain.c database.c LMC.c verifyhash.c GenCKGS.c utils.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
     $ ./ComGenCKGS
 ### Executing LM-WY
     $ gcc -o ComWY ComWYmain.c database.c LMC.c verifyhash.c WY.c utils.c -lcrypto -lgmp -L /FULL-PATH/CPIR/blst/lib/ -lblst
@@ -91,3 +91,11 @@ The implementation results show that our schemes with extra protection for the C
 ---
 ## ACKNOWLEDGMENTS 
 This work was supported by the Australian Research Council through the Discovery Project under Grant DP200100731.
+
+---
+## REFERENCES
+
+[LM] R. W. Lai and G. Malavolta, “Subvector commitments with application to succinct arguments,” in Advances in Cryptology–CRYPTO 2019: 39th Annual International Cryptology Conference, Santa Barbara, CA, USA, August 18–22, 2019, Proceedings, Part I 39. Springer, 2019, pp. 530–560.
+[CKGS] B. Chor, E. Kushilevitz, O. Goldreich, and M. Sudan, “Private information retrieval,” Journal of the ACM (JACM), vol. 45, no. 6, pp. 965–981, 1998.
+[WY] D. Woodruff and S. Yekhanin, “A geometric approach to information-theoretic private information retrieval,” in 20th Annual IEEE Conference on Computational Complexity (CCC’05). IEEE, 2005, pp. 275–284.
+[BE] R. Bitar and S. El Rouayheb, “Staircase-pir: Universally robust private information retrieval,” in 2018 IEEE Information Theory Workshop (ITW). IEEE, 2018, pp. 1–5.
