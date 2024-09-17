@@ -90,7 +90,7 @@ The implementation results show that our schemes with extra protection for the C
 </p>
 
 **Figure 4:** The comparison of the average server and client computation times of the LM-WY scheme where $t = 1, n = 2^{10}, m = (2^{10}, 2^{12}), and (d, k) =
-((3, 2), (4, 3), (5, 3), (6, 4))$. When $d$ increases, the LM-PIR computation time on the server side tends to decrease because the number of answers and witnesses decreases regarded to O(n^(1/d)). However, when d increases, the size of queries also grows. It is why the computation cost of higher d is slightly higher in some cases, but in general, the computation time on the server side reduces when $d$ rises. On the Client side, the computation cost trend is similar to the computation time on the server. However, $d$ increases lead to an increase in $k$, so the total computation time on the Client side grows.
+((3, 2), (4, 3), (5, 3), (6, 4))$. When $d$ increases, the LM-PIR computation time on the server side tends to decrease because the number of answers and witnesses decreases regarded to $O(n^{(1/d)})$. However, when d increases, the size of queries also grows. It is why the computation cost of higher d is slightly higher in some cases, but in general, the computation time on the server side reduces when $d$ rises. On the Client side, the computation cost trend is similar to the computation time on the server. However, $d$ increases lead to an increase in $k$, so the total computation time on the Client side grows.
 
 ---
 ## ACKNOWLEDGMENTS 
