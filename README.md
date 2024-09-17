@@ -74,7 +74,7 @@ The implementation results show that our schemes with extra protection for the C
 **Figure 1:** The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where $k = 2, t = 1, n = 2^{10}$, and $m \in \{2^0, 2^{12}, 2^{14}, 2^{16}\}$. When $m$ increases, the total LM-PIR computation time increases, but the LM computation time parts are constant. It means that the percentage of LMC-related computation time decreases significantly when the vertical database increases.
 
 <p align="center">
-  <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779728-d474a1e3-6d0a-4ad2-83d4-5ab550d265fa.png"> <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779764-8e25f985-b584-4f24-9cab-def75f1c7efa.png">
+  <img width="400" height="300" src="https://github.com/user-attachments/assets/6d157f73-2b20-4f78-9a54-3b19d25a624d">
 </p>
 
 **Figure 2:** The comparison of the average server and client computation times between LM-CKGS and LM-BE schemes where $n = 2^{10}, m = 2^{12}, t = (k − 1)$ for both schemes, $t = 1$ for LM-BE scheme, and $k$ increases from 3 to 6. Assuming $(k − 1)$ colluding servers in the system, the LM-BE scheme performs quite better on the server side. In contrast, the LM-CKGS computational cost is slightly lower on the Client side. For the LM-BE scheme, there is a tradeoff when $t$ changes and higher $t$ means higher computation costs.
@@ -86,7 +86,7 @@ The implementation results show that our schemes with extra protection for the C
 **Figure 3:** The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where $k = 2, t = 1, m = 2^{10}$, and $n$ increases from $2^8$ to $2^{12}$. When $n$ increases, the total LM-PIR computation time increases, especially the LM computation time increases significantly. It means that the percentage of LMC-related computation time increases significantly when the horizontal database increases.
 
 <p align="center">
-  <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779906-eb2ffdf5-a405-4989-9ee5-f0d9c51530b7.png"> <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779912-8aeb452f-e90f-4947-978c-4230d8fddf64.png">
+  <img width="400" height="300" src="https://github.com/user-attachments/assets/d0937d46-ae44-42fd-9352-2dbbaebbe987">
 </p>
 
 **Figure 4:** The comparison of the average server and client computation times of the LM-WY scheme where $t = 1, n = 2^{10}, m \in \{2^{10}, 2^{12}\},$ and $(d, k) \in
