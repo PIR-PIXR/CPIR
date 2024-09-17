@@ -68,28 +68,28 @@ We ran our experiments on **Ubuntu** 22.04.1 LTS environment where the processor
 The implementation results show that our schemes with extra protection for the Client will increase the **constant** practical time on both servers and the client sides compared to the original PIR. We implemented multiple database sizes and several servers in the system. The overhead of LM is constant with the same size $n$, so when the database size increases, the percentage of LM time reduces significantly in the total LM-PIR time (see Fig. 1). The computation time for servers and the Client is below one second in most scenarios when the number of colluding servers is $k − 1$, except in the LM-WY case.
 
 <p align="center">
-  <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779606-f423e87c-9df9-4c7e-93fa-b71f1bf55bd5.png"> <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779651-d01f66d2-35cb-4e10-bd73-ced4136f858c.png">
+  <img width="800" height="300" src="https://github.com/user-attachments/assets/6d157f73-2b20-4f78-9a54-3b19d25a624d">
 </p>
 
-**Figure 1:** The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where $k = 2, t = 1, n = 2^{10}$, and $m \in \{2^0, 2^{12}, 2^{14}, 2^{16}\}$. When $m$ increases, the total LM-PIR computation time increases, but the LM computation time parts are constant. It means that the percentage of LMC-related computation time decreases significantly when the vertical database increases.
+**Figure 1:** The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where $k = 2, t = 1, n = 2^{10}$, and $m \in \{(2^0, 2^{12}, 2^{14}, 2^{16})\}$. When $m$ increases, the total LM-PIR computation time increases, but the LM computation time parts are constant. It means that the percentage of LMC-related computation time decreases significantly when the vertical database increases.
 
 <p align="center">
-  <img width="400" height="300" src="https://github.com/user-attachments/assets/6d157f73-2b20-4f78-9a54-3b19d25a624d">
+  <img width="800" height="300" src="https://github.com/user-attachments/assets/6d157f73-2b20-4f78-9a54-3b19d25a624d">
 </p>
 
 **Figure 2:** The comparison of the average server and client computation times between LM-CKGS and LM-BE schemes where $n = 2^{10}, m = 2^{12}, t = (k − 1)$ for both schemes, $t = 1$ for LM-BE scheme, and $k$ increases from 3 to 6. Assuming $(k − 1)$ colluding servers in the system, the LM-BE scheme performs quite better on the server side. In contrast, the LM-CKGS computational cost is slightly lower on the Client side. For the LM-BE scheme, there is a tradeoff when $t$ changes and higher $t$ means higher computation costs.
 
 <p align="center">
-  <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779833-3170bd8e-fe30-4c38-9a2c-93dcd0349aad.png"> <img width="400" height="300" src="https://user-images.githubusercontent.com/87842051/230779844-739ba227-cd21-4eb8-8732-4354c653d709.png">
+  <img width="800" height="300" src="https://github.com/user-attachments/assets/d0937d46-ae44-42fd-9352-2dbbaebbe987">
 </p>
 
 **Figure 3:** The comparison of the average server and client computation times regraded to three different LM-PIR cases (LM-CKGS, LM-WY, and LM-BE) where $k = 2, t = 1, m = 2^{10}$, and $n$ increases from $2^8$ to $2^{12}$. When $n$ increases, the total LM-PIR computation time increases, especially the LM computation time increases significantly. It means that the percentage of LMC-related computation time increases significantly when the horizontal database increases.
 
 <p align="center">
-  <img width="400" height="300" src="https://github.com/user-attachments/assets/d0937d46-ae44-42fd-9352-2dbbaebbe987">
+  <img width="800" height="300" src="https://github.com/user-attachments/assets/d0937d46-ae44-42fd-9352-2dbbaebbe987">
 </p>
 
-**Figure 4:** The comparison of the average server and client computation times of the LM-WY scheme where $t = 1, n = 2^{10}, m \in \{2^{10}, 2^{12}\},$ and $(d, k) \in
+**Figure 4:** The comparison of the average server and client computation times of the LM-WY scheme where $t = 1, n = 2^{10}, m \in \{(2^{10}, 2^{12})\},$ and $(d, k) \in
 ((3, 2), (4, 3), (5, 3), (6, 4))$. When $d$ increases, the LM-PIR computation time on the server side tends to decrease because the number of answers and witnesses decreases regarded to $O(n^{(1/d)})$. However, when d increases, the size of queries also grows. It is why the computation cost of higher d is slightly higher in some cases, but in general, the computation time on the server side reduces when $d$ rises. On the Client side, the computation cost trend is similar to the computation time on the server. However, $d$ increases lead to an increase in $k$, so the total computation time on the Client side grows.
 
 ---
