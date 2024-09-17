@@ -99,10 +99,10 @@ This work was supported by the Australian Research Council through the Discovery
 ---
 ## REFERENCES
 
-[LM](https://doi.org/10.1007/978-3-030-26948-7_19) R. W. Lai and G. Malavolta, “Subvector commitments with application to succinct arguments,” in Advances in Cryptology–CRYPTO 2019: 39th Annual International Cryptology Conference, Santa Barbara, CA, USA, August 18–22, 2019, Proceedings, Part I 39. Springer, 2019, pp. 530–560.
+[[LM](https://doi.org/10.1007/978-3-030-26948-7_19)] R. W. Lai and G. Malavolta, “Subvector commitments with application to succinct arguments,” in Advances in Cryptology–CRYPTO 2019: 39th Annual International Cryptology Conference, Santa Barbara, CA, USA, August 18–22, 2019, Proceedings, Part I 39. Springer, 2019, pp. 530–560.
 
-[CKGS](https://dl.acm.org/doi/10.1145/293347.293350) B. Chor, E. Kushilevitz, O. Goldreich, and M. Sudan, “Private information retrieval,” Journal of the ACM (JACM), vol. 45, no. 6, pp. 965–981, 1998.
+[[CKGS](https://dl.acm.org/doi/10.1145/293347.293350)] B. Chor, E. Kushilevitz, O. Goldreich, and M. Sudan, “Private information retrieval,” Journal of the ACM (JACM), vol. 45, no. 6, pp. 965–981, 1998.
 
-[WY](https://doi.org/10.1109/CCC.2005.2) D. Woodruff and S. Yekhanin, “A geometric approach to information-theoretic private information retrieval,” in 20th Annual IEEE Conference on Computational Complexity (CCC’05). IEEE, 2005, pp. 275–284.
+[[WY](https://doi.org/10.1109/CCC.2005.2)] D. Woodruff and S. Yekhanin, “A geometric approach to information-theoretic private information retrieval,” in 20th Annual IEEE Conference on Computational Complexity (CCC’05). IEEE, 2005, pp. 275–284.
 
-[BE](https://doi.org/10.1109/ITW.2018.8613532) R. Bitar and S. El Rouayheb, “Staircase-pir: Universally robust private information retrieval,” in 2018 IEEE Information Theory Workshop (ITW). IEEE, 2018, pp. 1–5.
+[[BE](https://doi.org/10.1109/ITW.2018.8613532)] R. Bitar and S. El Rouayheb, “Staircase-pir: Universally robust private information retrieval,” in 2018 IEEE Information Theory Workshop (ITW). IEEE, 2018, pp. 1–5.
